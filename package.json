@@ -1,0 +1,25 @@
+{
+  "name": "mysql-employee-tracker",
+  "version": "1.0.0",
+  "description": "MySQL command-line application that manages a company's employees",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+github.com:connietran-dev/mysql-employee-tracker.git"
+  },
+  "keywords": [
+    "mysql",
+    "database",
+    "cli",
+    "node",
+    "inquirer"
+  ],
+  "author": "Connie Tran",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
