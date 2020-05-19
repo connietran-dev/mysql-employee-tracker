@@ -28,6 +28,7 @@ function start() {
             choices: [
                 "View All Employees",
                 "View All Employees by Department",
+                "View All Employees by Manager",
                 "Exit"
             ]
         })
@@ -38,7 +39,11 @@ function start() {
                     break;
 
                 case "View All Employees by Department":
-                    viewEmployeeDept();
+                    employee.viewEmployeeDept(connection, start);
+                    break;
+
+                case "View All Employees by Manager":
+                    employee.viewEmployeeMgr(connection, start);
                     break;
 
                 case "Exit":
