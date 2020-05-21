@@ -3,8 +3,12 @@ const mysql = require('mysql');
 const inquirer = require('inquirer');
 
 // Internal modules
-// Functions for searching by employee
-const employee = require('./employeeSearch.js');
+// View only queries
+const view = require('./utils/view.js');
+// Adding new employees or roles
+const add = require('./utils/add.js');
+// Updating and deleting existing data
+const update = require('./utils/update.js');
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -31,29 +35,34 @@ function start() {
                 "View All Employees by Manager",
                 "Add Employee",
                 "Remove Employee",
+                "Update Employee Role",
                 "Exit"
             ]
         })
         .then(function (answer) {
             switch (answer.action) {
                 case "View All Employees":
-                    employee.viewAllEmployees(connection, start);
+                    view.viewAllEmployees(connection, start);
                     break;
 
                 case "View All Employees by Department":
-                    employee.viewEmployeeDept(connection, start);
+                    view.viewEmployeeDept(connection, start);
                     break;
 
                 case "View All Employees by Manager":
-                    employee.viewEmployeeMgr(connection, start);
+                    view.viewEmployeeMgr(connection, start);
                     break;
 
                 case "Add Employee":
-                    employee.addEmployee(connection, start);
+                    add.addEmployee(connection, start);
                     break;
 
                 case "Remove Employee":
-                    employee.removeEmployee(connection, start);
+                    update.removeEmployee(connection, start);
+                    break;
+
+                case "Update Employee Role":
+                    update.updateRole(connection, start);
                     break;
 
                 case "Exit":
