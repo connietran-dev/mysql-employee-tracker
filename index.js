@@ -29,7 +29,7 @@ function start() {
                 "View All Employees",
                 "View All Employees by Department",
                 "View All Employees by Manager",
-                // "Add Employee",
+                "Add Employee",
                 "Remove Employee",
                 "Exit"
             ]
@@ -48,9 +48,9 @@ function start() {
                     employee.viewEmployeeMgr(connection, start);
                     break;
 
-                // case "Add Employee":
-                //     employee.addEmployee(connection, start);
-                //     break;
+                case "Add Employee":
+                    employee.addEmployee(connection, start);
+                    break;
 
                 case "Remove Employee":
                     employee.removeEmployee(connection, start);
