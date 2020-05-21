@@ -6,7 +6,7 @@ const inquirer = require('inquirer');
 // Functions for searching by employee
 const employee = require('./employeeSearch.js');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
@@ -29,6 +29,8 @@ function start() {
                 "View All Employees",
                 "View All Employees by Department",
                 "View All Employees by Manager",
+                // "Add Employee",
+                "Remove Employee",
                 "Exit"
             ]
         })
@@ -44,6 +46,14 @@ function start() {
 
                 case "View All Employees by Manager":
                     employee.viewEmployeeMgr(connection, start);
+                    break;
+
+                // case "Add Employee":
+                //     employee.addEmployee(connection, start);
+                //     break;
+
+                case "Remove Employee":
+                    employee.removeEmployee(connection, start);
                     break;
 
                 case "Exit":
