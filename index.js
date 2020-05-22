@@ -36,6 +36,7 @@ function start() {
                 "Add Employee",
                 "Remove Employee",
                 "Update Employee Role",
+                "Update Employee Manager",
                 "View All Roles",
                 "Add Role",
                 "Remove Role",
@@ -66,6 +67,10 @@ function start() {
 
                 case "Update Employee Role":
                     update.updateRole(connection, start);
+                    break;
+
+                case "Update Employee Manager":
+                    update.updateManager(connection, start);
                     break;
 
                 case "View All Roles":
