@@ -92,7 +92,37 @@ function updateRole(connection, cb) {
     })
 };
 
+function removeRole (connection, cb) {
+    connection.query("SELECT * FROM role", function (err, results) {
+        if (err) throw err;
+        inquirer
+            .prompt([
+                {
+                    name: "removeRole",
+                    type: "list",
+                    choices: function () {
+                        let choiceArray = [];
+                        for (var i = 0; i < results.length; i++) {
+                            choiceArray.push(results[i].title);
+                        }
+                        return choiceArray;
+                    },
+                    message: "Which role would you like to remove?"
+                }
+            ])
+            .then(function (answer) {
+                let query = 'DELETE FROM role WHERE title = ?;'
+                connection.query(query, answer.removeRole, function (err, res) {
+                    if (err) throw err;
+                    console.log("Role successfully deleted");
+                    cb();
+                });
+            });
+    });
+}
+
 module.exports = {
     removeEmployee: removeEmployee,
-    updateRole: updateRole
+    updateRole: updateRole,
+    removeRole: removeRole
 }

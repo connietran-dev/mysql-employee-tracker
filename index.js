@@ -36,7 +36,10 @@ function start() {
                 "Add Employee",
                 "Remove Employee",
                 "Update Employee Role",
-                "Exit"
+                "View All Roles",
+                "Add Role",
+                "Remove Role",
+                "EXIT"
             ]
         })
         .then(function (answer) {
@@ -65,7 +68,19 @@ function start() {
                     update.updateRole(connection, start);
                     break;
 
-                case "Exit":
+                case "View All Roles":
+                    view.viewRoles(connection, start);
+                    break;
+
+                case "Add Role":
+                    add.addRole(connection, start);
+                    break;
+
+                case "Remove Role":
+                    update.removeRole(connection, start);
+                    break;
+
+                case "EXIT":
                     connection.end();
                     break;
             }

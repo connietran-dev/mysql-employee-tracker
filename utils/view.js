@@ -73,8 +73,19 @@ function viewEmployeeMgr(connection, cb) {
 };
 
 
+function viewRoles (connection, cb) {
+    let query = "SELECT * FROM role";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        cb();
+    });
+}
+
+
 module.exports = {
     viewAllEmployees: viewAllEmployees,
     viewEmployeeDept: viewEmployeeDept,
-    viewEmployeeMgr: viewEmployeeMgr
+    viewEmployeeMgr: viewEmployeeMgr,
+    viewRoles: viewRoles
 };
