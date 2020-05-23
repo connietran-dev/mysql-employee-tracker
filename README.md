@@ -18,7 +18,10 @@ This Node command-line application allows the user to:
 
   * Update employee managers
 
-![Employee Tracker](assets/employee-tracker.gif)
+
+
+![Demo of Employee Tracker application](assets/employee-tracker.gif)
+
 
 ## Installation
 
