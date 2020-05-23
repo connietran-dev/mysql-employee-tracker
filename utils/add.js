@@ -55,7 +55,7 @@ function addEmployee(connection, cb) {
                     newEmployee.role_id = results[0].id;
 
                     // Ask for manager
-                    connection.query("SELECT DISTINCT e2.first_name FROM employee LEFT JOIN employee AS e2 ON employee.manager_id = e2.id WHERE e2.first_name IS NOT NULL;", answer.role, function (err, results) {
+                    connection.query("SELECT * FROM employee;", function (err, results) {
                         if (err) throw err;
                         inquirer
                             .prompt([
@@ -157,7 +157,36 @@ function addRole(connection, cb) {
 };
 
 
+function addDepartment(connection, cb) {
+    inquirer
+        .prompt([
+            {
+                name: "dept_name",
+                type: "input",
+                default: "Marketing",
+                message: "What is the department you would like to add?",
+                validate: function (answer) {
+                    if (answer.length < 1) {
+                        return console.log("A valid department name is required.");
+                    }
+                    return true;
+                }
+            }
+        ])
+        .then(function (answer) {
+                connection.query('INSERT INTO department (name) VALUES (?)', answer.dept_name, function (err, results) {
+                    if (err) throw err;
+                    console.log("Department successfully added.");
+                    cb();
+                });
+
+        })
+
+};
+
+
 module.exports = {
     addEmployee: addEmployee,
-    addRole: addRole
+    addRole: addRole,
+    addDepartment: addDepartment
 };

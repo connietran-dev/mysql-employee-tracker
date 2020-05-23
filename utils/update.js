@@ -180,11 +180,44 @@ function removeRole(connection, cb) {
                 });
             });
     });
+};
+
+
+function removeDepartment (connection, cb) {
+    connection.query("SELECT * FROM department", function (err, results) {
+        if (err) throw err;
+        inquirer
+            .prompt([
+                {
+                    name: "removeDept",
+                    type: "list",
+                    choices: function () {
+                        let choiceArray = [];
+                        for (var i = 0; i < results.length; i++) {
+                            choiceArray.push(results[i].name);
+                        }
+                        return choiceArray;
+                    },
+                    message: "Which department would you like to remove?"
+                }
+            ])
+            .then(function (answer) {
+                let query = 'DELETE FROM department WHERE name = ?;'
+                connection.query(query, answer.removeDept, function (err, res) {
+                    if (err) throw err;
+                    console.log("Department successfully deleted");
+                    cb();
+                });
+            });
+    });
 }
+
+
 
 module.exports = {
     removeEmployee: removeEmployee,
     updateRole: updateRole,
     updateManager: updateManager,
-    removeRole: removeRole
+    removeRole: removeRole,
+    removeDepartment: removeDepartment
 }

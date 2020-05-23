@@ -34,12 +34,15 @@ function start() {
                 "View All Employees by Department",
                 "View All Employees by Manager",
                 "Add Employee",
-                "Remove Employee",
                 "Update Employee Role",
                 "Update Employee Manager",
+                "Remove Employee",
                 "View All Roles",
                 "Add Role",
                 "Remove Role",
+                "View All Departments",
+                "Add Department",
+                "Remove Department",
                 "EXIT"
             ]
         })
@@ -61,16 +64,16 @@ function start() {
                     add.addEmployee(connection, start);
                     break;
 
-                case "Remove Employee":
-                    update.removeEmployee(connection, start);
-                    break;
-
                 case "Update Employee Role":
                     update.updateRole(connection, start);
                     break;
 
                 case "Update Employee Manager":
                     update.updateManager(connection, start);
+                    break;
+
+                case "Remove Employee":
+                    update.removeEmployee(connection, start);
                     break;
 
                 case "View All Roles":
@@ -83,6 +86,18 @@ function start() {
 
                 case "Remove Role":
                     update.removeRole(connection, start);
+                    break;
+
+                case "View All Departments":
+                    view.viewDepartments(connection, start);
+                    break;
+
+                case "Add Department":
+                    add.addDepartment(connection, start);
+                    break;
+
+                case "Remove Department":
+                    update.removeDepartment(connection, start);
                     break;
 
                 case "EXIT":

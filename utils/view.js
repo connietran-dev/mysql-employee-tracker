@@ -80,12 +80,22 @@ function viewRoles (connection, cb) {
         console.table(res);
         cb();
     });
-}
+};
+
+function viewDepartments (connection, cb) {
+    let query = "SELECT * FROM department";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        cb();
+    })
+};
 
 
 module.exports = {
     viewAllEmployees: viewAllEmployees,
     viewEmployeeDept: viewEmployeeDept,
     viewEmployeeMgr: viewEmployeeMgr,
-    viewRoles: viewRoles
+    viewRoles: viewRoles,
+    viewDepartments: viewDepartments
 };
